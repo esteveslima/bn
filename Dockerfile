@@ -1,20 +1,12 @@
-# Setting up a serverless container for development
-
-# Use the official node image (TODO: switch to nvm?)
 FROM node:lts-alpine as nodeBuilderStage
 
-# Install extra useful packages for alpine version
 RUN apk add --no-cache curl && \
     apk add --no-cache bash && \
     apk add --no-cache nano && \
     apk add --no-cache sudo
 
-# Install development packages(beware of versions) TODO: register last working versions
 RUN npm install -g npm@lts    
-    # npm install -g serverless          # Using serverless installed locally to track version(using npm scripts as aliases) -> TODO: check if commands doesnt become too much verbose with the extas double dashes '--' to isolate npm scripts options from command options
-    # apk add --no-cache inotify-tools   # Possible future feature which would monitor folders(such as s3 local) to automatically generate commands(such as s3 aws-cli)
 
-# Install AWS-CLI and glibc for compatibility in alpine
 ENV GLIBC_VER=2.31-r0
 RUN apk --no-cache add binutils && \
     curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub && \
@@ -34,14 +26,12 @@ RUN apk --no-cache add binutils && \
     apk --no-cache del binutils && \
     rm -rf /var/cache/apk/*
 
-# Grant privileges to alpine native node user
 RUN echo "node ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/node && \
     chmod 0440 /etc/sudoers.d/node && \
     chmod 755 /root
-# Change and config node user
+
 USER node
 RUN echo "complete -d cd" >> ~/.bashrc
 RUN echo "PS1='\e[1;30m(\t)[\w]\$ \e[0m'" >> ~/.bashrc; source ~/.bashrc
 
-# Keeps de container running
 CMD tail -f /dev/null

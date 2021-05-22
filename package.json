@@ -63,13 +63,13 @@
     "aws": "aws --endpoint-url http://localstack-container:8000 --region us-east-1"
   },
   "scriptsDescriptions": {
-    "EXPLANATION": "dummy object only used to comment built scripts(will be ignored by npm) -> TODO",
+    "EXPLANATION": "dummy object only used to comment built scripts(will be ignored by npm)",
     "prepare": "required script for husky(saving to resources scripts folder)",
     "wsp": "alias for npm workspaces command",
-    "services": "script for designated workspaces TODO: way to run with regex @pkg/*",
+    "services": "script for designated workspaces",
     "clear": "script to clear all packages(modules and temp files)",
     "update-dependencies:from": "[BEWARE OF BREAKING CHANGES]script for bumping all dependencies to the latest versions, requires package path",
-    "lerna-add": "workaround to add a package as dependency(or dev dependency) to another package non manually. This is required to enable changes recognition propagation to leaf packages(usage: 'npm run lerna-add -- <leaf_package_path> <imported_package_path>') ........TODO: check later if npm provide a proper way to add dependencies with workspaces",
+    "lerna-add": "workaround to add a package as dependency(or dev dependency) to another package non manually. This is required to enable changes recognition propagation to leaf packages(usage: 'npm run lerna-add -- <leaf_package_path> <imported_package_path>')",
     "postlerna-add": "post script to resolve dependencies and symlink after adding a package to another package",
     "lerna-version": "use lerna to update packages versions(automatically creates a new commit and pushes it)",
     "lerna-modified": "use lerna to list packages that have been changed(default to since most-recent tag, also could compare branches)",

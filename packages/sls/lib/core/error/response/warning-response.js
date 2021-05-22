@@ -1,6 +1,5 @@
 import errorObjects from '../error-objects';
 
-// Class wraping warning responses
 class WarningResponse extends Error {
   constructor(errorObject, errorDetail) {
     super(errorObject.message);
