@@ -13,7 +13,7 @@ module.exports = async ({ options, resolveConfigurationProperty }) => {
         {
           http: {
             method: 'POST',
-            path: '/item',
+            path: '/item/{userName}',
           },
         },
       ],

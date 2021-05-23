@@ -1,14 +1,12 @@
 // @ts-ignore
 import { lambda, logger, middleware } from '@sls/lib';
-import { APIGatewayEvent } from 'aws-lambda';
+import { SlsAPIGatewayEvent } from '../../common/config/types/types';
+import * as activitiesDao from '../../common/database/dao/activities-dao';
 
-middleware.before((event : APIGatewayEvent) => { logger.log('middleware usage example'); });
+export default lambda(async (event : SlsAPIGatewayEvent) => {
+  const { userName, itemName } = event.pathParameters;
 
-export default lambda(async (event : APIGatewayEvent & { body : object }) => {
-  // const { params } = event.body;
-  logger.log(1);
+  const resultGet = await activitiesDao.getActivity(userName, itemName);
 
-  return {
-    result: 'params',
-  };
+  return resultGet;
 });

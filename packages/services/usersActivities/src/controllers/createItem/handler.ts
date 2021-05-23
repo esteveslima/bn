@@ -1,13 +1,14 @@
 // @ts-ignore
 import { lambda, logger, middleware } from '@sls/lib';
-import { APIGatewayEvent } from 'aws-lambda';
+import { SlsAPIGatewayEvent, IActivityModel } from '../../common/config/types/types';
+import * as activitiesDao from '../../common/database/dao/activities-dao';
 
-middleware.before((event : APIGatewayEvent) => { logger.log('middleware usage example'); });
+export default lambda(async (event : SlsAPIGatewayEvent) => {
+  const { userName } = event.pathParameters;
+  const payload = event.body as IActivityModel;
+  const itemName = payload.name;
 
-export default lambda(async (event : APIGatewayEvent & { body : object }) => {
-  const { params } = event.body;
+  const resultCreate = await activitiesDao.createActivity(userName, itemName, payload);
 
-  return {
-    result: params,
-  };
+  return { result: `Activity '${itemName}' successfully created for user ${userName} ` };
 });
