@@ -12,7 +12,8 @@
   "devDependencies": {
     "@sls/configurations": "file:../../sls/configurations",
     "@sls/definitions": "file:../../sls/definitions",
-    "@types/aws-lambda": "^8.10.76"
+    "@types/aws-lambda": "^8.10.76",
+    "@types/redis": "^2.8.28"
   },
   "scripts": {
     "sls": "serverless",

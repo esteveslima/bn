@@ -26,8 +26,6 @@ module.exports = {
     'max-len': 'off',
     'no-unused-vars': 'off',
 
-    // 'no-undef': 'off',
-
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
 
     'import/extensions': ['error', 'ignorePackages', { js: 'never', ts: 'never' }],
