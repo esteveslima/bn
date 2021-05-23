@@ -1,6 +1,6 @@
 // @ts-ignore
 import { ErrorObjects } from '@sls/lib';
-import { IErrorObjects } from '../types/types';
+import { IErrorObjects } from '../../assets/types/types';
 
 export default {
   ...ErrorObjects as IErrorObjects, // not working until fix @sls/lib to typescript, copying code instead

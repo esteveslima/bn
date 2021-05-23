@@ -1,7 +1,7 @@
 // @ts-ignore
 import { ErrorResponse } from '@sls/lib';
 import redisClient from '../../config/redis-client';
-import { IActivityModel } from '../../../config/types/types';
+import { IActivityModel } from '../../../assets/types/types';
 import ErrorObjects from '../../../config/errors/service-errors';
 
 export default async (userName : string, itemName : string) : Promise<IActivityModel> => {

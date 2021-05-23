@@ -1,7 +1,7 @@
 // @ts-ignore
 import { ErrorResponse } from '@sls/lib';
 import redisClient from '../../config/redis-client';
-import { IActivityModel } from '../../../config/types/types';
+import { IActivityModel } from '../../../assets/types/types';
 import ErrorObjects from '../../../config/errors/service-errors';
 
 interface IActivityModelList {
@@ -15,7 +15,7 @@ export default async (userName : string) : Promise<IActivityModelList> => {
     if (err) reject(err); else resolve(data);
   }));
 
-  const resultsFound = !!Object.keys(activities).length;
+  const resultsFound = !!activities && !!Object.keys(activities).length;
   if (!resultsFound) throw new ErrorResponse(ErrorObjects.NOT_FOUND, activities);
 
   const activitiesList : IActivityModelList = Object.values(activities).map((activity : string) => JSON.parse(activity));
