@@ -25,11 +25,11 @@
 					"variable": [
 						{
 							"key": "userName",
-							"value": ""
+							"value": "someUser"
 						},
 						{
 							"key": "itemName",
-							"value": ""
+							"value": "someItem"
 						}
 					]
 				}
@@ -43,7 +43,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"updatedItemName\",\n    \"executionDate\": \"01/01/1970\",\n    \"conclusionDate\": \"01/01/1970\",\n    \"status\": \"pendent/finished\",\n    \"priority\": \"low/medium/high\"\n}",
+					"raw": "{\n    \"name\": \"someItem\",\n    \"executionDate\": \"01/01/1970\",\n    \"conclusionDate\": \"01/01/1970\",\n    \"status\": \"pendent/finished\",\n    \"priority\": \"low/medium/high\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,7 +64,7 @@
 					"variable": [
 						{
 							"key": "userName",
-							"value": ""
+							"value": "someUser"
 						}
 					]
 				}
@@ -91,11 +91,11 @@
 					"variable": [
 						{
 							"key": "userName",
-							"value": ""
+							"value": "someUser"
 						},
 						{
 							"key": "itemName",
-							"value": ""
+							"value": "someItem"
 						}
 					]
 				}
@@ -109,7 +109,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"createdItemName\",\n    \"executionDate\": \"01/01/1970\",\n    \"conclusionDate\": \"01/01/1970\",\n    \"status\": \"pendent/finished\",\n    \"priority\": \"low/medium/high\"\n}",
+					"raw": "{\n    \"name\": \"someItem\",\n    \"executionDate\": \"01/01/1970\",\n    \"conclusionDate\": \"01/01/1970\",\n    \"status\": \"pendent/finished\",\n    \"priority\": \"low/medium/high\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -117,14 +117,21 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{HOST}}/{{STAGE}}/item",
+					"raw": "https://{{HOST}}/{{STAGE}}/item/:userName",
 					"protocol": "https",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"{{STAGE}}",
-						"item"
+						"item",
+						":userName"
+					],
+					"variable": [
+						{
+							"key": "userName",
+							"value": "someUser"
+						}
 					]
 				}
 			},
@@ -149,7 +156,7 @@
 					"variable": [
 						{
 							"key": "userName",
-							"value": ""
+							"value": "someUser"
 						}
 					]
 				}
