@@ -46,7 +46,7 @@ module.exports = async ({ options, resolveConfigurationProperty }) => {
         {
           http: {
             method: 'PUT',
-            path: '/item/{userName}',
+            path: '/item/{userName}/{itemName}',
           },
         },
       ],

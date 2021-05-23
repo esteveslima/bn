@@ -4,9 +4,8 @@ import { SlsAPIGatewayEvent, IActivityModel } from '../../common/config/types/ty
 import * as activitiesDao from '../../common/database/dao/activities-dao';
 
 export default lambda(async (event : SlsAPIGatewayEvent) => {
-  const { userName } = event.pathParameters;
+  const { userName, itemName } = event.pathParameters;
   const payload = event.body as IActivityModel;
-  const itemName = payload.name;
 
   const resultUpdate = await activitiesDao.updateActivity(userName, itemName, payload);
 
