@@ -1,13 +1,12 @@
 // @ts-ignore
 import { lambda, logger, middleware } from '@sls/lib';
-import { APIGatewayEvent } from 'aws-lambda';
+import { SlsAPIGatewayEvent } from '../../common/config/types/types';
+import * as activitiesDao from '../../common/database/dao/activities-dao';
 
-middleware.before((event : APIGatewayEvent) => { logger.log('middleware usage example'); });
+export default lambda(async (event : SlsAPIGatewayEvent) => {
+  const { userName, itemName } = event.pathParameters;
 
-export default lambda(async (event : APIGatewayEvent & { body : object }) => {
-  const { params } = event.body;
+  const resultDelete = await activitiesDao.deleteActivity(userName, itemName);
 
-  return {
-    result: params,
-  };
+  return { result: `Activity '${itemName}' successfully deleted for user ${userName} ` };
 });
