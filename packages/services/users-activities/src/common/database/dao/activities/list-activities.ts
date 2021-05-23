@@ -12,13 +12,12 @@ export default async (userName : string) : Promise<IActivityModelList> => {
   const key = userName;
 
   const activities : object = await new Promise((resolve, reject) => redisClient.hgetall(key, (err, data) => {
-    if (err) reject(err);
-    if (!data) reject(new ErrorResponse(ErrorObjects.NOT_FOUND, data));
-
-    resolve(data);
+    if (err) reject(err); else resolve(data);
   }));
 
-  const activitiesList : IActivityModelList = Object.values(activities).map((activity : string) => JSON.parse(activity));
+  const resultsFound = !!Object.keys(activities).length;
+  if (!resultsFound) throw new ErrorResponse(ErrorObjects.NOT_FOUND, activities);
 
+  const activitiesList : IActivityModelList = Object.values(activities).map((activity : string) => JSON.parse(activity));
   return activitiesList;
 };

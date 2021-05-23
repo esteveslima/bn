@@ -9,10 +9,11 @@ export default async (userName : string, itemName : string, payload : IActivityM
   const field = itemName;
   const value = JSON.stringify(payload);
 
-  return new Promise((resolve, reject) => redisClient.hsetnx(key, field, value, (err, data) => {
-    if (err) reject(err);
-    if (!data) reject(new ErrorResponse(ErrorObjects.ALREADY_EXISTS, data));
-
-    resolve(true);
+  const createResult : boolean = await new Promise((resolve, reject) => redisClient.hsetnx(key, field, value, (err, data) => {
+    if (err) reject(err); else resolve(!!data);
   }));
+
+  if (!createResult) throw new ErrorResponse(ErrorObjects.ALREADY_EXISTS, createResult);
+
+  return createResult;
 };

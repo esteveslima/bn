@@ -8,10 +8,13 @@ export default async (userName : string, itemName : string) : Promise<IActivityM
   const key = userName;
   const field = itemName;
 
-  return new Promise((resolve, reject) => redisClient.hget(key, field, (err, data) => {
-    if (err) reject(err);
-    if (!data) reject(new ErrorResponse(ErrorObjects.NOT_FOUND, data));
-
-    resolve(JSON.parse(data));
+  const getResult : string = await new Promise((resolve, reject) => redisClient.hget(key, field, (err, data) => {
+    if (err) reject(err); else resolve(data);
   }));
+
+  const itemFound = !!getResult;
+  if (!itemFound) throw new ErrorResponse(ErrorObjects.NOT_FOUND, getResult);
+
+  const result : IActivityModel = JSON.parse(getResult);
+  return result;
 };
