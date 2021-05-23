@@ -1,5 +1,5 @@
-const { eslintConfig } = require('@sls/configurations');
+const { eslintConfigTs } = require('@sls/configurations');
 
 module.exports = {
-  ...eslintConfig,
+  ...eslintConfigTs,
 };

@@ -5,14 +5,14 @@ version: '3.8'
 services:
     
     serverless-container:                                             # Setting up Serverless development environment        
-        image: esteveslima/serverless-template-image:latest           
+        image: esteveslima/bn-image:latest           
         build:
             context: .
             dockerfile: Dockerfile
         volumes:
-            - ./:/serverless-template                                  
+            - ./:/bn                                  
             - ./resources/config/aws/.aws:/home/node/.aws             
-        working_dir: /serverless-template      
+        working_dir: /bn      
         environment:
             - NODE_TLS_REJECT_UNAUTHORIZED=0                          
         restart: "no"

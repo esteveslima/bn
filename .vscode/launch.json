@@ -13,7 +13,7 @@
             "outFiles": [
                 "${workspaceFolder}/.webpack/**/*.js"        
             ],
-            "remoteRoot": "/serverless-template",            
+            "remoteRoot": "/bn",            
             "address": "localhost",
             "port": 4000,                                    
         }

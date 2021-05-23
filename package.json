@@ -1,5 +1,5 @@
 {
-  "name": "serverless-template",
+  "name": "bn",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -85,12 +85,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/esteveslima/serverless-template.git"
+    "url": "git+https://github.com/esteveslima/bn.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/esteveslima/serverless-template/issues"
+    "url": "https://github.com/esteveslima/bn/issues"
   },
-  "homepage": "https://github.com/esteveslima/serverless-template#readme"
+  "homepage": "https://github.com/esteveslima/bn#readme"
 }

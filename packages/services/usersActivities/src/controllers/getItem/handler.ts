@@ -7,6 +7,7 @@ middleware.before((event : APIGatewayEvent) => { logger.log('middleware usage ex
 export default lambda(async (event : APIGatewayEvent & { body : object }) => {
   // const { params } = event.body;
   logger.log(1);
+
   return {
     result: 'params',
   };
